@@ -176,16 +176,16 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 20
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 0
-  m_HDR: 1
+  m_HDR: 0
   m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
@@ -411,12 +411,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f8f01b76fa02c641af8c61aeae429b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positionCount: 20
-  targetLength: 7
-  smoothSpeed: 0.015
+  positionCount: 70
+  targetLength: 5
+  smoothSpeed: 0.0025
   movementType: 1
-  wiggleSpeed: 10
-  wiggleMagnitude: 30
+  wiggleSpeed: 5
+  wiggleMagnitude: 15
 --- !u!120 &756337680
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -463,7 +463,7 @@ LineRenderer:
   - {x: 10, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 4.2
+    widthMultiplier: 6.7839847
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -518,13 +518,134 @@ LineRenderer:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
-    numCapVertices: 10
+    numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 2
     shadowBias: 0
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!1001 &1162908138
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8854889053627997875, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.5913751
+      objectReference: {fileID: 0}
+    - target: {fileID: -8854889053627997875, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.00000007736464
+      objectReference: {fileID: 0}
+    - target: {fileID: -8854889053627997875, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99997985
+      objectReference: {fileID: 0}
+    - target: {fileID: -8854889053627997875, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8854889053627997875, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8854889053627997875, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0063500036
+      objectReference: {fileID: 0}
+    - target: {fileID: -8854889053627997875, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_Name
+      value: RiggedFish
+      objectReference: {fileID: 0}
+    - target: {fileID: -7552582706839291426, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -7552582706839291426, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7552582706839291426, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7552582706839291426, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7552582706839291426, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7552582706839291426, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7552582706839291426, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7552582706839291426, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7552582706839291426, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7552582706839291426, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7552582706839291426, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7902977062715314990, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9999588
+      objectReference: {fileID: 0}
+    - target: {fileID: 7902977062715314990, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7902977062715314990, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7902977062715314990, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.009080915
+      objectReference: {fileID: 0}
+    - target: {fileID: 7902977062715314990, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648882755762834919, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.0063240863
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648882755762834919, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648882755762834919, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.99998003
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648882755762834919, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 4843985084834002234, guid: 9364942982b58654dadc3c36e9448187, type: 3}
 --- !u!1 &1182526091
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,7 +664,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1182526092
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -647,6 +768,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxMoveSpeed: 7.5
   waterControlMagnitude: 3
+--- !u!1 &1828547208 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8653719598885068355, guid: 9364942982b58654dadc3c36e9448187, type: 3}
+  m_PrefabInstance: {fileID: 1162908138}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1828547210
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828547208}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 39532e3d30c5ab145b9f74109dfa0ac6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2058550032
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,8 +823,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bd0e13a7cc5bd04bae7f7a96fcc1e57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMoveSpeed: 7.5
-  waterControlMagnitude: 3
+  maxMoveSpeed: 15
+  waterControlMagnitude: 6
 --- !u!50 &2058550034
 Rigidbody2D:
   serializedVersion: 4
@@ -708,7 +854,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2058550032}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5, z: 0}
+  m_LocalPosition: {x: 3, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
