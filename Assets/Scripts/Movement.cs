@@ -19,7 +19,7 @@ public class Movement : MonoBehaviour
         rotation = transform.eulerAngles.z;
         movementMagnitude = 0;
         moveSpeed = maxMoveSpeed;
-    
+
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -47,7 +47,7 @@ public class Movement : MonoBehaviour
         moveSpeed = Mathf.Lerp(moveSpeed, maxMoveSpeed, lerpSpeed);
         movementMagnitude = Mathf.Lerp(movementMagnitude, rawMovement.magnitude, lerpSpeed);
 
-        rb.velocity = transform.up * movementMagnitude * moveSpeed;
+        rb.velocity = transform.right * movementMagnitude * moveSpeed;
     }
 
     void GetPlayerRotation(float lerpSpeed)
@@ -55,7 +55,7 @@ public class Movement : MonoBehaviour
         float degRotation = Mathf.Atan2(rawMovement.y, rawMovement.x) * Mathf.Rad2Deg;
         transform.eulerAngles = Vector3.forward * rotation;
 
-        rotation = Mathf.LerpAngle(rotation, (degRotation - 90), lerpSpeed);
+        rotation = Mathf.LerpAngle(rotation, degRotation, lerpSpeed);
     }
 
 }
