@@ -9,7 +9,7 @@ public class ProceduralAnimation : MonoBehaviour
 {
 
     // number of positions in the line renderer, higher number = smoother
-    [Range(1, 50)]
+    [Range(1, 100)]
     public int positionCount = 30;
 
     // the length of the line renderer
@@ -17,7 +17,7 @@ public class ProceduralAnimation : MonoBehaviour
     public float targetLength = 10;
 
     // smoothDamp speed, lower value = smoother
-    [Range(0.01f, 0.05f)]
+    [Range(0.001f, 0.03f)]
     public float smoothSpeed = 0.02f;
 
 
@@ -60,7 +60,7 @@ public class ProceduralAnimation : MonoBehaviour
         {
             // Wiggle doesn't work without adding targetDirection.right somewhere in the code
             Vector3 targetPosition = segmentPositions[position - 1] +
-            (segmentPositions[position] - segmentPositions[position - 1]).normalized * targetDistance;
+            ((segmentPositions[position] - segmentPositions[position - 1]).normalized + targetDirection.right) * targetDistance;
 
             segmentPositions[position] = Vector3.SmoothDamp(segmentPositions[position],
                 targetPosition,
