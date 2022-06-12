@@ -19,6 +19,7 @@ public class FollowHandler : MonoBehaviour
     public Transform target;
     private float distanceWithTarget;
     private bool isRoaming;
+    private float triggerDistance = 15;
 
     void Awake()
     {
@@ -51,11 +52,17 @@ public class FollowHandler : MonoBehaviour
 
     IEnumerator Roam()
     {
-        Debug.Log("Hey, I am roaming! " + Random.Range(0, 100));
+        float x = Random.Range(-1, 1);
+        float y = Random.Range(-1, 1);
+        float time = Random.Range(3, 6);
 
-        yield return new WaitForSeconds(3);
+        rawMovement.x = x;
+        rawMovement.y = y;
 
-        if (distanceWithTarget >= 30)  StartCoroutine(Roam());
+
+        yield return new WaitForSeconds(time);
+
+        if (distanceWithTarget >= triggerDistance)  StartCoroutine(Roam());
     }
 
 
@@ -65,7 +72,7 @@ public class FollowHandler : MonoBehaviour
         distanceWithTarget = Vector3.Distance(transform.position, target.transform.position);
 
         // If distance is less than 30 (in this case), ChaseTarget() is executed in Update
-        if (distanceWithTarget < 30) 
+        if (distanceWithTarget < triggerDistance) 
         {
             if (isRoaming) 
             {
