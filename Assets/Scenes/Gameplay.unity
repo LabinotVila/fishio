@@ -707,4 +707,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxMoveSpeed: 3
   waterControlMagnitude: 1
-  objectToFollow: {fileID: 1182526093}
+  target: {fileID: 1182526093}

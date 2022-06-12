@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class FollowHandler : MonoBehaviour
@@ -9,11 +10,27 @@ public class FollowHandler : MonoBehaviour
     private float moveSpeed;
     private float movementMagnitude;
     private float rotation;
-    public Transform objectToFollow;
 
 
     private Rigidbody2D rb;
     private Vector3 rawMovement;
+
+    // Variables regarding whether to chase the target or roam
+    public Transform target;
+    private float distanceWithTarget;
+    private bool isRoaming;
+
+    void Awake()
+    {
+        // Set distance to auto-roam
+        distanceWithTarget = Mathf.NegativeInfinity;
+
+        // Then we set roaming to true, because we suppose all enemies are far away
+        isRoaming = true;
+
+        // We auto start the co-routine and let all fishes roam around lead hedless dogs
+        StartCoroutine(Roam());
+    }
 
     void Start()
     {
@@ -24,22 +41,58 @@ public class FollowHandler : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+
+    void ChaseTarget() 
     {
-        Vector3 relativePos = objectToFollow.position - transform.position;
+        Vector3 relativePos = target.position - transform.position;
         relativePos.Normalize();
         rawMovement = relativePos;
     }
 
+    IEnumerator Roam()
+    {
+        Debug.Log("Hey, I am roaming! " + Random.Range(0, 100));
+
+        yield return new WaitForSeconds(3);
+
+        if (distanceWithTarget >= 30)  StartCoroutine(Roam());
+    }
+
+
     void FixedUpdate()
     {
-        //Interpolation speed
+        // We keep checking for the distance between the fish and the target (the Player)
+        distanceWithTarget = Vector3.Distance(transform.position, target.transform.position);
+
+        // If distance is less than 30 (in this case), ChaseTarget() is executed in Update
+        if (distanceWithTarget < 30) 
+        {
+            if (isRoaming) 
+            {
+                isRoaming = false;
+
+                StopCoroutine(Roam());
+            }
+
+            ChaseTarget();
+        } 
+        else // Otherwise, set Roaming to true, this method is executed every 3 seconds (the fishes change the way they swim every 3 seconds)
+        {
+            if (!isRoaming) 
+            {
+                isRoaming = true;
+
+                StartCoroutine(Roam());
+            }
+        }
+
+        // Interpolation speed
         float lerpSpeed = waterControlMagnitude * Time.fixedDeltaTime;
 
-        //Move
+        // Move
         GetPlayerMovement(lerpSpeed);
 
-        //Rotate
+        // Rotate
         if (rawMovement.magnitude != 0)
             GetPlayerRotation(lerpSpeed);
     }
