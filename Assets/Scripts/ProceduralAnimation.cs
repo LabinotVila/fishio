@@ -60,7 +60,7 @@ public class ProceduralAnimation : MonoBehaviour
         {
             // Wiggle doesn't work without adding targetDirection.right somewhere in the code
             Vector3 targetPosition = segmentPositions[position - 1] +
-            ((segmentPositions[position] - segmentPositions[position - 1]).normalized + targetDirection.right) * targetDistance;
+            ((segmentPositions[position] - segmentPositions[position - 1]).normalized) * targetDistance;
 
             segmentPositions[position] = Vector3.SmoothDamp(segmentPositions[position],
                 targetPosition,

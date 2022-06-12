@@ -51,22 +51,25 @@ public class Movement : MonoBehaviour
         moveSpeed = Mathf.Lerp(moveSpeed, maxMoveSpeed, lerpSpeed);
         movementMagnitude = Mathf.Lerp(movementMagnitude, rawMovement.magnitude, lerpSpeed);
 
-        rb.velocity = transform.right * movementMagnitude * moveSpeed;
+        rb.velocity = headSolver.right * movementMagnitude * moveSpeed;
     }
 
     void GetPlayerRotation(float lerpSpeed)
     {
         float degRotation = Mathf.Atan2(rawMovement.y, rawMovement.x) * Mathf.Rad2Deg;
 
-
+        // head and tail rotation
         float solverRotation = Mathf.Clamp(animationRotation, -80, 80);
-        headSolver.localEulerAngles = Vector3.forward * -solverRotation;
-        tailSolver.localEulerAngles = Vector3.forward * solverRotation;
+
+        headSolver.localEulerAngles = Vector3.forward * -animationRotation;
+        //tailSolver.localEulerAngles = Vector3.forward * animationRotation;
+
+        animationRotation = Mathf.LerpAngle(animationRotation, degRotation - transform.eulerAngles.z, lerpSpeed);
+
 
         transform.eulerAngles = Vector3.forward * rotation;
-
         rotation = Mathf.LerpAngle(rotation, degRotation, lerpSpeed);
-        animationRotation = Mathf.LerpAngle(animationRotation, degRotation - transform.eulerAngles.z, lerpSpeed);
+       
     }
 
 }
