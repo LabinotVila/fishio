@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Movement movement;
+    public Joystick joystick;
     void Start()
     {
         movement = GetComponent<Movement>();
@@ -16,8 +17,17 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 direction = new Vector2();
 
-        direction.x = Input.GetAxisRaw("Horizontal");
-        direction.y = Input.GetAxisRaw("Vertical");
+        if (joystick)
+        {
+            direction.x = joystick.Horizontal;
+            direction.y = joystick.Vertical;
+
+        }
+        else
+        {
+            direction.x = Input.GetAxisRaw("Horizontal");
+            direction.y = Input.GetAxisRaw("Vertical");
+        }
 
         movement.SetDirection(direction);
     }
