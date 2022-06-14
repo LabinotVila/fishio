@@ -2571,7 +2571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxMoveSpeed: 20
-  waterControlMagnitude: 6
+  waterControlMagnitude: 1
 --- !u!50 &8722275149039468909
 Rigidbody2D:
   serializedVersion: 4
