@@ -7,6 +7,7 @@ public class TailMovement : MonoBehaviour
 {
     public Transform tailSolver;
     public Transform tailTarget;
+    private Transform body;
 
     public float tailMovement = 1;
     public float tailFrequency = 2;
@@ -17,6 +18,8 @@ public class TailMovement : MonoBehaviour
     void Start()
     {
         movement = GetComponent<Movement>();
+        body = GetComponent<Movement>().body;
+
         tailPosition = tailTarget.localPosition;
     }
 
@@ -25,7 +28,7 @@ public class TailMovement : MonoBehaviour
         float lerpSpeed = movement.GetWaterControlMagnitude() * Time.deltaTime;
 
         // get distance between tail and fish
-        float distance = Vector2.Angle(tailSolver.right, transform.right);
+        float distance = Vector2.Angle(tailSolver.right, body.right);
 
         // move the tail up and down
         if (tailFrequency != 0 && tailMovement != 0)
@@ -35,7 +38,6 @@ public class TailMovement : MonoBehaviour
             tailTarget.localPosition = tailPosition;
 
         // rotate the tail based on the movement
-        tailSolver.rotation = Quaternion.RotateTowards(tailSolver.rotation, transform.rotation, distance * lerpSpeed * 1.5f);
-        tailSolver.position = transform.position;
+        tailSolver.rotation = Quaternion.RotateTowards(tailSolver.rotation, body.rotation, distance * lerpSpeed * 1.5f);
     }
 }

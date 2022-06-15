@@ -3,6 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Movement : MonoBehaviour
 {
+    public Transform body;
     [SerializeField]
     private float maxMoveSpeed = 5f;
 
@@ -40,6 +41,7 @@ public class Movement : MonoBehaviour
         if (rawMovement.magnitude != 0)
             DoRotation(lerpSpeed);
 
+        rb.angularVelocity = 0;
     }
 
     void DoMovement(float lerpSpeed)
@@ -47,16 +49,15 @@ public class Movement : MonoBehaviour
         moveSpeed = Mathf.Lerp(moveSpeed, maxMoveSpeed, lerpSpeed);
         movementMagnitude = Mathf.Lerp(movementMagnitude, rawMovement.magnitude, lerpSpeed);
 
-        rb.velocity = transform.right * movementMagnitude * moveSpeed;
+        rb.velocity = (Vector2)(body.right * movementMagnitude * moveSpeed);
     }
 
     void DoRotation(float lerpSpeed)
     {
         float degRotation = Mathf.Atan2(rawMovement.y, rawMovement.x) * Mathf.Rad2Deg;
 
-        transform.eulerAngles = Vector3.forward * rotation;
+        body.eulerAngles = Vector3.forward * rotation;
         rotation = Mathf.LerpAngle(rotation, degRotation, lerpSpeed);
-
     }
 
     public void SetDirection(Vector2 movement)
