@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: cba782b631db44c4394193ac13c6503c, type: 3}
   m_Name: Default
-  m_EditorClassIdentifier: Assembly-CSharp::SOFish
-  fishType: 0
-  HP: 20
-  XP: 5
+  m_EditorClassIdentifier: 
+  fish: {fileID: 5476705046752914289, guid: 210438a473311fc4c9c502070b670a71, type: 3}
+  maxHp: 5
+  xpOnDeath: 10
+  baseMovementSpeed: 5
+  baseAttackDamage: 5

@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BiteAttack : MonoBehaviour, IAttack
+public class BiteAttack : IAttack
 {
     public int damage;
     public float attackCooldown;
     private bool canAttack = true;
-    public void Attack()
+
+    
+    public override void Attack()
     {
         StartCoroutine(AttackCooldown());
     }
