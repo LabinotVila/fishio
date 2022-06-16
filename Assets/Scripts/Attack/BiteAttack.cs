@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BiteAttack : IAttack
 {
-    public int damage;
+    private int damage;
     public float attackCooldown;
     private bool canAttack = true;
 
@@ -12,6 +12,10 @@ public class BiteAttack : IAttack
     public override void Attack()
     {
         StartCoroutine(AttackCooldown());
+    }
+    public override void SetDamage(int damage)
+    {
+        this.damage = damage;
     }
 
     IEnumerator AttackCooldown()

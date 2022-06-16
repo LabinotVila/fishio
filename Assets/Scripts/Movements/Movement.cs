@@ -4,11 +4,8 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public Transform body;
-    [SerializeField]
-    private float maxMoveSpeed = 5f;
-
-    [SerializeField]
-    private float waterControlMagnitude = 1f;
+    public float maxMoveSpeed = 5f;
+    public float waterControlMagnitude = 1f;
 
     private float moveSpeed;
     private float movementMagnitude;
