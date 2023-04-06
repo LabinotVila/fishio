@@ -302,9 +302,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1986e0ea8be1b44ac8c0293a6d2215a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 50
-  height: 50
-  cellSize: 4
+  horizontalCells: 50
+  verticalCells: 50
+  cellSize: 3
+  lineWidth: 0.2
   gridColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1221918601
 Transform:

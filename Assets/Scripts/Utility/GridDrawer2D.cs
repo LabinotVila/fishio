@@ -1,13 +1,14 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class GridDrawer : MonoBehaviour
+public class GridDrawer2D : MonoBehaviour
 {
-    public int width = 10;
-    public int height = 10;
+    public int horizontalCells = 10;
+    public int verticalCells = 10;
     public float cellSize = 1f;
+    [Range(0.15f, 0.4f)] public float lineWidth = 0.15f;
     public Color gridColor = Color.white;
 
-    private const float LineWidth = 0.15f;
     private LineRenderer _lineRenderer;
 
     private void Start()
@@ -19,8 +20,8 @@ public class GridDrawer : MonoBehaviour
     {
         _lineRenderer = container.AddComponent<LineRenderer>();
         _lineRenderer.useWorldSpace = true;
-        _lineRenderer.startWidth = LineWidth;
-        _lineRenderer.endWidth = LineWidth;
+        _lineRenderer.startWidth = lineWidth;
+        _lineRenderer.endWidth = lineWidth;
         _lineRenderer.material = new Material(Shader.Find("Unlit/Color"));
         _lineRenderer.material.color = gridColor;
 
@@ -40,20 +41,20 @@ public class GridDrawer : MonoBehaviour
 
     private void DrawGrid()
     {
-        float offsetX = (width * cellSize) / 2;
-        float offsetY = (height * cellSize) / 2;
+        float offsetX = (horizontalCells * cellSize) / 2;
+        float offsetY = (verticalCells * cellSize) / 2;
 
-        for (int i = 0; i <= width; i++)
+        for (int i = 0; i <= horizontalCells; i++)
         {
             Vector3 startPos = new Vector3(i * cellSize - offsetX, -offsetY, 0);
-            Vector3 endPos = new Vector3(i * cellSize - offsetX, height * cellSize - offsetY, 0);
+            Vector3 endPos = new Vector3(i * cellSize - offsetX, verticalCells * cellSize - offsetY, 0);
             DrawLine(startPos, endPos);
         }
 
-        for (int j = 0; j <= height; j++)
+        for (int j = 0; j <= verticalCells; j++)
         {
             Vector3 startPos = new Vector3(0 - offsetX, j * cellSize - offsetY, 0);
-            Vector3 endPos = new Vector3(width * cellSize - offsetX, j * cellSize - offsetY, 0);
+            Vector3 endPos = new Vector3(horizontalCells * cellSize - offsetX, j * cellSize - offsetY, 0);
             DrawLine(startPos, endPos);
         }
     }
