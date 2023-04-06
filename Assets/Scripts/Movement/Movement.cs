@@ -7,63 +7,58 @@ public class Movement : MonoBehaviour
     public float maxMoveSpeed = 5f;
     public float waterControlMagnitude = 1f;
 
-    private float moveSpeed;
-    private float movementMagnitude;
-    private float rotation;
+    private float _moveSpeed;
+    private float _movementMagnitude;
+    private float _rotation;
 
+    private Rigidbody2D _rigidbody2D;
+    private Vector3 _rawMovement;
 
-    private Rigidbody2D rb;
-    private Vector3 rawMovement = new Vector3();
-
-    void Start()
+    private void Start()
     {
-        rotation = transform.eulerAngles.z;
+        _rotation = transform.eulerAngles.z;
 
-        movementMagnitude = 0;
-        moveSpeed = maxMoveSpeed;
+        _movementMagnitude = 0;
+        _moveSpeed = maxMoveSpeed;
 
-        rb = GetComponent<Rigidbody2D>();
-
+        _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    private void Update()
     {
-        //Interpolation speed
-        float lerpSpeed = waterControlMagnitude * Time.deltaTime;
+        var interpolationSpeed = waterControlMagnitude * Time.deltaTime;
 
-        //Move
-        DoMovement(lerpSpeed);
+        DoMovement(interpolationSpeed);
 
-        //Rotate
-        if (rawMovement.magnitude != 0)
-            DoRotation(lerpSpeed);
+        if (_rawMovement.magnitude != 0)
+            DoRotation(interpolationSpeed);
 
-        rb.angularVelocity = 0;
+        _rigidbody2D.angularVelocity = 0;
     }
 
-    void DoMovement(float lerpSpeed)
+    private void DoMovement(float interpolationSpeed)
     {
-        moveSpeed = Mathf.Lerp(moveSpeed, maxMoveSpeed, lerpSpeed);
-        movementMagnitude = Mathf.Lerp(movementMagnitude, rawMovement.magnitude, lerpSpeed);
+        _moveSpeed = Mathf.Lerp(_moveSpeed, maxMoveSpeed, interpolationSpeed);
+        _movementMagnitude = Mathf.Lerp(_movementMagnitude, _rawMovement.magnitude, interpolationSpeed);
 
-        rb.velocity = (Vector2)(body.right * movementMagnitude * moveSpeed);
+        _rigidbody2D.velocity = body.right * (_movementMagnitude * _moveSpeed);
     }
 
-    void DoRotation(float lerpSpeed)
+    private void DoRotation(float interpolationSpeed)
     {
-        float degRotation = Mathf.Atan2(rawMovement.y, rawMovement.x) * Mathf.Rad2Deg;
+        var degRotation = Mathf.Atan2(_rawMovement.y, _rawMovement.x) * Mathf.Rad2Deg;
 
-        body.eulerAngles = Vector3.forward * rotation;
-        rotation = Mathf.LerpAngle(rotation, degRotation, lerpSpeed);
+        body.eulerAngles = Vector3.forward * _rotation;
+        _rotation = Mathf.LerpAngle(_rotation, degRotation, interpolationSpeed);
     }
 
     public void SetDirection(Vector2 movement)
     {
-        rawMovement = movement;
+        _rawMovement = movement;
     }
+
     public float GetWaterControlMagnitude()
     {
         return waterControlMagnitude;
     }
-
 }

@@ -1,34 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Vector2 = UnityEngine.Vector2;
 
 [RequireComponent(typeof(Movement))]
 public class PlayerMovement : MonoBehaviour
 {
-    private Movement movement;
+    private Movement _movement;
     public Joystick joystick;
-    void Start()
+
+    private void Start()
     {
-        movement = GetComponent<Movement>();
+        _movement = GetComponent<Movement>();
     }
 
-
-    void Update()
+    private void Update()
     {
         Vector2 direction = new Vector2();
 
-        if (joystick)
-        {
-            direction.x = joystick.Horizontal;
-            direction.y = joystick.Vertical;
+        direction = joystick ? MoveWithJoystick(direction) : MoveWithKeys(direction);
 
-        }
-        else
-        {
-            direction.x = Input.GetAxisRaw("Horizontal");
-            direction.y = Input.GetAxisRaw("Vertical");
-        }
+        _movement.SetDirection(direction);
+    }
 
-        movement.SetDirection(direction);
+    private Vector2 MoveWithJoystick(Vector2 direction)
+    {
+        direction.x = joystick.Horizontal;
+        direction.y = joystick.Vertical;
+
+        return direction;
+    }
+
+    private Vector2 MoveWithKeys(Vector2 direction)
+    {
+        direction.x = Input.GetAxisRaw("Horizontal");
+        direction.y = Input.GetAxisRaw("Vertical");
+
+        return direction;
     }
 }
