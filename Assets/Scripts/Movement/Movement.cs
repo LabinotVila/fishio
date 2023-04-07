@@ -1,10 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Movement : MonoBehaviour
 {
     public Transform body;
-    public float maxMoveSpeed = 5f;
     public float waterControlMagnitude = 1f;
 
     private float _moveSpeed;
@@ -14,12 +14,17 @@ public class Movement : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private Vector3 _rawMovement;
 
+    [SerializeField] private FishTypes fishType;
+    private Dictionary<Attributes.Types, int> stats;
+
     private void Start()
     {
+        stats = Attributes.Handler.GetAttributesForFish(fishType);
+
         _rotation = transform.eulerAngles.z;
 
         _movementMagnitude = 0;
-        _moveSpeed = maxMoveSpeed;
+        _moveSpeed = stats[Attributes.Types.Speed];
 
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
@@ -38,7 +43,7 @@ public class Movement : MonoBehaviour
 
     private void DoMovement(float interpolationSpeed)
     {
-        _moveSpeed = Mathf.Lerp(_moveSpeed, maxMoveSpeed, interpolationSpeed);
+        _moveSpeed = Mathf.Lerp(_moveSpeed, stats[Attributes.Types.Speed], interpolationSpeed);
         _movementMagnitude = Mathf.Lerp(_movementMagnitude, _rawMovement.magnitude, interpolationSpeed);
 
         _rigidbody2D.velocity = body.right * (_movementMagnitude * _moveSpeed);
