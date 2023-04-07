@@ -1,6 +1,6 @@
 ﻿namespace Attributes
 {
-    public enum Types
+    public enum Type
     {
         Speed,
         Health,
