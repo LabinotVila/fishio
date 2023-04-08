@@ -8,11 +8,11 @@ namespace Attributes
         [SerializeField] private Specie.Type specieType;
         private Dictionary<Type, ValueGrowth> stats;
 
-        private void Start()
+        private void Awake()
         {
             stats = Configs.GetForFish(specieType);
         }
-
+        
         public Dictionary<Type, ValueGrowth> GetStats()
         {
             return stats;
