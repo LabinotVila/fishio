@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Attributes
 {
-    public class Attacher : MonoBehaviour
+    public class Stats : MonoBehaviour
     {
         [SerializeField] private Specie.Type specieType;
         private Dictionary<Type, ValueGrowth> stats;
