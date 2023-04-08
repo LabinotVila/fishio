@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Attributes;
 using UnityEngine;
 
-[RequireComponent(typeof(Attacher))]
+[RequireComponent(typeof(Stats))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class Movement : MonoBehaviour
 {
@@ -20,7 +20,7 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
-        attributesAttacher = GetComponent<Attacher>().GetStats();
+        attributesAttacher = GetComponent<Stats>().GetStats();
 
         _rotation = transform.eulerAngles.z;
 
