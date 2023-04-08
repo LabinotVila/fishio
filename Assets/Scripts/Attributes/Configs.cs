@@ -17,8 +17,8 @@ namespace Attributes
 
             AllStats.Add(Specie.Type.EntrySmall, new Dictionary<Type, ValueGrowth>
             {
-                { Type.Speed, new ValueGrowth(5, 0.15) },
-                { Type.Health, new ValueGrowth(4, 0.1) },
+                { Type.Speed, new ValueGrowth(1, 0.15) },
+                { Type.Health, new ValueGrowth(1, 0.1) },
                 { Type.Agility, new ValueGrowth(1, 0.05) }
             });
         }
