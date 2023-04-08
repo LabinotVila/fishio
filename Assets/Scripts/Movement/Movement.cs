@@ -1,10 +1,12 @@
+using System.Collections.Generic;
+using Attributes;
 using UnityEngine;
 
+[RequireComponent(typeof(Attacher))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class Movement : MonoBehaviour
 {
     public Transform body;
-    public float maxMoveSpeed = 5f;
     public float waterControlMagnitude = 1f;
 
     private float _moveSpeed;
@@ -14,12 +16,16 @@ public class Movement : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private Vector3 _rawMovement;
 
+    private Dictionary<Type, ValueGrowth> attributesAttacher;
+
     private void Start()
     {
+        attributesAttacher = GetComponent<Attacher>().GetStats();
+
         _rotation = transform.eulerAngles.z;
 
         _movementMagnitude = 0;
-        _moveSpeed = maxMoveSpeed;
+        _moveSpeed = attributesAttacher[Type.Speed].GetValue();
 
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
@@ -38,7 +44,7 @@ public class Movement : MonoBehaviour
 
     private void DoMovement(float interpolationSpeed)
     {
-        _moveSpeed = Mathf.Lerp(_moveSpeed, maxMoveSpeed, interpolationSpeed);
+        _moveSpeed = Mathf.Lerp(_moveSpeed, attributesAttacher[Type.Speed].GetValue(), interpolationSpeed);
         _movementMagnitude = Mathf.Lerp(_movementMagnitude, _rawMovement.magnitude, interpolationSpeed);
 
         _rigidbody2D.velocity = body.right * (_movementMagnitude * _moveSpeed);

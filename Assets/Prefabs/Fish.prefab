@@ -138,7 +138,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1184355430444029678}
-  m_LocalRotation: {x: 0, y: 0, z: 0.018791528, w: 0.9998234}
+  m_LocalRotation: {x: 0, y: 0, z: 0.01881482, w: 0.99982303}
   m_LocalPosition: {x: 1.4143258, y: 0.0000002589258, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -271,7 +271,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1184355430831579368}
-  m_LocalRotation: {x: 0, y: 0, z: -0.010851614, w: 0.9999412}
+  m_LocalRotation: {x: 0, y: 0, z: -0.010889023, w: 0.9999407}
   m_LocalPosition: {x: 1.3187214, y: 0.000000089229815, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -416,7 +416,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1184355431222675864}
-  m_LocalRotation: {x: 0, y: 0, z: 0.99996173, w: 0.008745827}
+  m_LocalRotation: {x: 0, y: 0, z: 0.99996173, w: 0.008758113}
   m_LocalPosition: {x: -0.1648362, y: 0.0008957677, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -478,7 +478,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1184355431488458115}
-  m_LocalRotation: {x: -0, y: -0, z: -0.0008051303, w: -0.9999997}
+  m_LocalRotation: {x: -0, y: -0, z: -0.0008315322, w: -0.99999964}
   m_LocalPosition: {x: 1.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -591,8 +591,8 @@ MonoBehaviour:
   - {fileID: 1184355430444029679}
   - {fileID: 1184355430831579369}
   m_Bounds:
-    m_Center: {x: 0.6857586, y: 0.026370049, z: 0}
-    m_Extent: {x: 4.309407, y: 2.10363, z: 0}
+    m_Center: {x: 0.68572235, y: 0.026370049, z: 0}
+    m_Extent: {x: 4.309371, y: 2.10363, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -607,9 +607,11 @@ GameObject:
   - component: {fileID: 1184355431661003444}
   - component: {fileID: 1184355431661003443}
   - component: {fileID: 1184355431661003406}
-  - component: {fileID: 1184355431661003441}
+  - component: {fileID: 2250702009436933652}
   - component: {fileID: 8722275148982099104}
+  - component: {fileID: 1184355431661003441}
   - component: {fileID: 8722275148982099105}
+  - component: {fileID: 8722275148982099099}
   m_Layer: 6
   m_Name: Fish
   m_TagString: Untagged
@@ -675,7 +677,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1184355431661003441
+--- !u!114 &2250702009436933652
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -684,12 +686,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1184355431661003442}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bd0e13a7cc5bd04bae7f7a96fcc1e57, type: 3}
+  m_Script: {fileID: 11500000, guid: 799e15ec188a465b92bcd3590ba4b32e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body: {fileID: 7594216810606195018}
-  maxMoveSpeed: 15
-  waterControlMagnitude: 3
+  specieType: 0
 --- !u!114 &8722275148982099104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -703,6 +703,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joystick: {fileID: 0}
+--- !u!114 &1184355431661003441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184355431661003442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bd0e13a7cc5bd04bae7f7a96fcc1e57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body: {fileID: 7594216810606195018}
+  waterControlMagnitude: 3
 --- !u!114 &8722275148982099105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -716,6 +730,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tailSolver: {fileID: 1184355430743384592}
+--- !u!114 &8722275148982099099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184355431661003442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 799e15ec188a465b92bcd3590ba4b32e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  specieType: 0
 --- !u!1 &7594216810606195021
 GameObject:
   m_ObjectHideFlags: 0
