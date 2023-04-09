@@ -2,7 +2,7 @@
 {
     public enum Type
     {
-        Main,
-        EntrySmall
+        Player,
+        Basic
     }
 }

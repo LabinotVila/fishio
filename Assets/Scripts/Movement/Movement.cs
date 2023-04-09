@@ -1,8 +1,7 @@
-using System.Collections.Generic;
-using Attributes;
+using Unit;
 using UnityEngine;
 
-[RequireComponent(typeof(Stats))]
+[RequireComponent(typeof(ISpeciesBehavior))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class Movement : MonoBehaviour
 {
@@ -16,16 +15,16 @@ public class Movement : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private Vector3 _rawMovement;
 
-    private Dictionary<Type, ValueGrowth> attributesAttacher;
+    private int speciesSpeed;
 
     private void Start()
     {
-        attributesAttacher = GetComponent<Stats>().GetStats();
+        speciesSpeed = GetComponent<ISpeciesBehavior>().GetSpeed();
 
         _rotation = transform.eulerAngles.z;
 
         _movementMagnitude = 0;
-        _moveSpeed = attributesAttacher[Type.Speed].GetValue();
+        _moveSpeed = speciesSpeed;
 
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
@@ -44,7 +43,7 @@ public class Movement : MonoBehaviour
 
     private void DoMovement(float interpolationSpeed)
     {
-        _moveSpeed = Mathf.Lerp(_moveSpeed, attributesAttacher[Type.Speed].GetValue(), interpolationSpeed);
+        _moveSpeed = Mathf.Lerp(_moveSpeed, speciesSpeed, interpolationSpeed);
         _movementMagnitude = Mathf.Lerp(_movementMagnitude, _rawMovement.magnitude, interpolationSpeed);
 
         _rigidbody2D.velocity = body.right * (_movementMagnitude * _moveSpeed);
