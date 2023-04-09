@@ -1,8 +1,8 @@
-﻿namespace Specie
+namespace Creature
 {
     public enum Type
     {
         Player,
-        Basic
+        Npc
     }
 }
