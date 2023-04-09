@@ -1,5 +1,6 @@
-﻿using Attributes;
+﻿using Unity.VisualScripting;
 using UnityEngine;
+using Metadata = Attributes.Metadata;
 
 namespace Unit
 {
@@ -15,6 +16,17 @@ namespace Unit
         public int GetSpeed()
         {
             return playerAttributes.Speed;
+        }
+        
+        // This method will emit onPlayerDeath action
+        private void OnCollisionEnter2D(Collision2D col)
+        {
+            playerAttributes.Health = -1;
+
+            if (playerAttributes.Health <= 0)
+            {
+                Actions.Type.onPlayerDeath.Invoke();
+            }
         }
     }
 }

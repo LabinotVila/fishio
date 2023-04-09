@@ -8,10 +8,10 @@ namespace Attributes
 
         static Metadata()
         {
-            var npcAttributes = new Basic(5, 1);
+            var npcAttributes = new Basic(5, 1, 1);
             AllStats.Add(Specie.Type.Basic, npcAttributes);
             
-            var playerAttributes = new Player(15, 1, 1);
+            var playerAttributes = new Player(15, 1, 1, 1);
             AllStats.Add(Specie.Type.Player, playerAttributes);
         }
 
